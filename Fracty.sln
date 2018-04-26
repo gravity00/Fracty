@@ -7,6 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C734202-5DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fracty", "src\Fracty\Fracty.csproj", "{6D5F1D04-27C2-4E19-91FD-ED2911308D2A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2D427A01-23F2-4217-A98D-D6E591EB12B5}"
+	ProjectSection(SolutionItems) = preProject
+		tools\Fracty.PublicKey = tools\Fracty.PublicKey
+		tools\Fracty.snk = tools\Fracty.snk
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
