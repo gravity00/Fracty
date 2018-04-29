@@ -27,6 +27,7 @@ namespace Fracty
         public static readonly Fraction MinValue = new Fraction(int.MinValue, 1);
 
         private readonly int _denominator;
+        private int _gcd;
 
         /// <summary>
         /// Creates a new fraction
@@ -41,23 +42,61 @@ namespace Fracty
 
             Numerator = numerator;
             _denominator = denominator;
+            _gcd = 0;
         }
 
         /// <summary>
-        /// The fraction numerator
+        /// The fraction numerator.
         /// </summary>
         public int Numerator { get; }
 
         /// <summary>
-        /// The fraction denominator
+        /// The fraction denominator.
         /// </summary>
         public int Denominator => _denominator == 0 ? 1 : _denominator;
+
+        /// <summary>
+        /// The fraction greatest common denominator.
+        /// </summary>
+        public int GreatestCommonDenominator
+        {
+            get
+            {
+                if (_gcd == 0)
+                {
+                    var n = Math.Abs(Numerator);
+                    var d = Math.Abs(Denominator);
+
+                    while (n != 0 && d != 0)
+                    {
+                        if (n > d)
+                            n %= d;
+                        else
+                            d %= n;
+                    }
+
+                    _gcd = n == 0 ? d : n;
+                }
+
+                return _gcd;
+            }
+        }
 
         /// <summary>
         /// Returns a reciprocal representation of this fraction
         /// </summary>
         /// <returns>The reciprocal fraction</returns>
         public Fraction Reciprocal() => new Fraction(Denominator, Numerator);
+
+        /// <summary>
+        /// Returns a reduced fraction using the greatest common denominator.
+        /// </summary>
+        /// <returns>The reduced fraction</returns>
+        public Fraction Reduce()
+        {
+            var gcd = GreatestCommonDenominator;
+            return new Fraction(Numerator / gcd, Denominator / gcd);
+        }
 
         /// <inheritdoc />
         public override string ToString() => string.Concat(Numerator, "/", Denominator);
