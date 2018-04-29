@@ -37,6 +37,46 @@ namespace Fracty
                 ? l.Numerator == r.Numerator
                 : l.Numerator * r.Denominator == r.Numerator * l.Denominator;
 
+        /// <summary>
+        /// Checks if fractions and an <see cref="int"/> represent the same value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator ==(int l, Fraction r) =>
+            l * r.Denominator == r.Numerator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="int"/> represent the same value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator ==(Fraction l, int r) =>
+            l.Numerator == r * l.Denominator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="short"/> represent the same value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator ==(short l, Fraction r) =>
+            l * r.Denominator == r.Numerator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="short"/> represent the same value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator ==(Fraction l, short r) =>
+            l.Numerator == r * l.Denominator;
+
         #endregion
 
         #region Not Equals
@@ -49,6 +89,46 @@ namespace Fracty
         /// <returns>False if same value, otherwise true</returns>
         /// <exception cref="OverflowException"></exception>
         public static bool operator !=(Fraction l, Fraction r) => !(l == r);
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="int"/> represent a different value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator !=(int l, Fraction r) =>
+            l * r.Denominator != r.Numerator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="int"/> represent a different value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator !=(Fraction l, int r) =>
+            l.Numerator != r * l.Denominator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="short"/> represent a different value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator !=(short l, Fraction r) =>
+            l * r.Denominator != r.Numerator;
+
+        /// <summary>
+        /// Checks if fractions and an <see cref="short"/> represent a different value.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if same value, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator !=(Fraction l, short r) =>
+            l.Numerator != r * l.Denominator;
 
         #endregion
     }
