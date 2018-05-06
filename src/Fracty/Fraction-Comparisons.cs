@@ -5,7 +5,9 @@ using System;
 
 namespace Fracty
 {
-    public partial struct Fraction : IEquatable<Fraction>, IComparable<Fraction>, IComparable
+    public partial struct Fraction : 
+        IEquatable<Fraction>, IEquatable<int>, IEquatable<short>, 
+        IComparable<Fraction>, IComparable<int>, IComparable<short>, IComparable
     {
         /// <inheritdoc />
         public override int GetHashCode()
@@ -20,6 +22,12 @@ namespace Fracty
 
         /// <inheritdoc />
         public bool Equals(Fraction other) => this == other;
+
+        /// <inheritdoc />
+        public bool Equals(int other) => this == other;
+
+        /// <inheritdoc />
+        public bool Equals(short other) => this == other;
 
         /// <inheritdoc />
         public override bool Equals(object obj) =>
@@ -139,6 +147,14 @@ namespace Fracty
             Denominator == other.Denominator
                 ? Numerator.CompareTo(other.Numerator)
                 : (Numerator * other.Denominator).CompareTo(other.Numerator * Denominator);
+
+        /// <inheritdoc />
+        public int CompareTo(int other) =>
+            Numerator.CompareTo(other * Denominator);
+
+        /// <inheritdoc />
+        public int CompareTo(short other) =>
+            Numerator.CompareTo(other * Denominator);
 
         /// <inheritdoc />
         public int CompareTo(object obj) =>
