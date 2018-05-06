@@ -14,7 +14,7 @@ namespace Fracty
         /// <summary>
         /// Represents the zero value (0/1). This field is constant.
         /// </summary>
-        public static readonly Fraction ZeroValue = new Fraction(0, 1);
+        public static readonly Fraction ZeroValue = default(Fraction);
 
         /// <summary>
         /// Represents the largest possible value of a fraction (<see cref="int.MaxValue"/>/1). This field is constant.
@@ -38,7 +38,7 @@ namespace Fracty
         public Fraction(int numerator, int denominator)
         {
             if (denominator == 0)
-                throw new ArgumentOutOfRangeException(nameof(denominator), "Denominator must not be zero");
+                throw new ArgumentOutOfRangeException(nameof(denominator), denominator, "Denominator must not be zero");
 
             if (denominator < 0)
             {
