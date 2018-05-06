@@ -100,22 +100,6 @@ namespace Fracty
         /// </summary>
         public int Sign => Math.Sign(Numerator);
 
-        /// <summary>
-        /// Returns a reciprocal representation of this fraction
-        /// </summary>
-        /// <returns>The reciprocal fraction</returns>
-        public Fraction Reciprocal() => new Fraction(Denominator, Numerator);
-
-        /// <summary>
-        /// Returns a reduced fraction using the greatest common denominator.
-        /// </summary>
-        /// <returns>The reduced fraction</returns>
-        public Fraction Reduce()
-        {
-            var gcd = GreatestCommonDenominator;
-            return new Fraction(Numerator / gcd, Denominator / gcd);
-        }
-
         /// <inheritdoc />
         public override string ToString() => string.Concat(Numerator, "/", Denominator);
     }
