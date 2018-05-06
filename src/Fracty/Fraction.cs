@@ -14,7 +14,7 @@ namespace Fracty
         /// <summary>
         /// Represents the zero value (0/1). This field is constant.
         /// </summary>
-        public static readonly Fraction Zero = new Fraction(0, 1);
+        public static readonly Fraction ZeroValue = new Fraction(0, 1);
 
         /// <summary>
         /// Represents the largest possible value of a fraction (<see cref="int.MaxValue"/>/1). This field is constant.
