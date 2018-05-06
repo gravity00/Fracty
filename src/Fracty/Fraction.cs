@@ -30,33 +30,45 @@ namespace Fracty
         private int _gcd;
 
         /// <summary>
-        /// Creates a new fraction
+        /// Creates a new fraction.
         /// </summary>
         /// <param name="numerator">The fraction numerator</param>
-        /// <param name="denominator">The fraction denominator</param>
+        /// <param name="denominator">The fraction denominator. If negative, the sign will be applied to the numerator instead.</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public Fraction(int numerator, int denominator)
         {
             if (denominator == 0)
-                throw new ArgumentOutOfRangeException(nameof(denominator));
+                throw new ArgumentOutOfRangeException(nameof(denominator), "Denominator must not be zero");
 
-            Numerator = numerator;
-            _denominator = denominator;
+            if (denominator < 0)
+            {
+                Numerator = numerator * -1;
+                _denominator = Math.Abs(denominator);
+            }
+            else
+            {
+                Numerator = numerator;
+                _denominator = denominator;
+            }
+
             _gcd = 0;
         }
 
         /// <summary>
         /// The fraction numerator.
+        /// <remarks>This value olds the fraction sign.</remarks>
         /// </summary>
         public int Numerator { get; }
 
         /// <summary>
         /// The fraction denominator.
+        /// <remarks>This value is always positive. Check the <see cref="Numerator"/> for the sign.</remarks>
         /// </summary>
         public int Denominator => _denominator == 0 ? 1 : _denominator;
 
         /// <summary>
         /// The fraction greatest common denominator.
+        /// <remarks>This value is lazy loaded.</remarks>
         /// </summary>
         public int GreatestCommonDenominator
         {
@@ -81,6 +93,12 @@ namespace Fracty
                 return _gcd;
             }
         }
+
+        /// <summary>
+        /// The fraction sign calculated from the <see cref="Numerator"/>.
+        /// <remarks>Same behavior as <see cref="Math.Sign(int)"/></remarks>.
+        /// </summary>
+        public int Sign => Math.Sign(Numerator);
 
         /// <summary>
         /// Returns a reciprocal representation of this fraction
