@@ -21,7 +21,7 @@ namespace Fracty
         public Fraction Reduce()
         {
             if (Numerator == 0)
-                return ZeroValue;
+                return Zero;
 
             var gcd = GreatestCommonDenominator;
             return new Fraction(Numerator / gcd, Denominator / gcd);
@@ -51,7 +51,7 @@ namespace Fracty
         public static Fraction Reduce(this Fraction fraction)
         {
             if (fraction.Numerator == 0)
-                return Fraction.ZeroValue;
+                return Fraction.Zero;
 
             var gcd = fraction.GreatestCommonDenominator;
             return new Fraction(fraction.Numerator / gcd, fraction.Denominator / gcd);

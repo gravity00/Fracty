@@ -23,11 +23,11 @@ namespace Fracty.Tests.Integers
             {
                 yield return new object[]
                 {
-                    new Fraction(0, 3), Fraction.ZeroValue //  zero
+                    new Fraction(0, 3), Fraction.Zero //  zero
                 };
                 yield return new object[]
                 {
-                    new Fraction(0, -7), Fraction.ZeroValue //  zero
+                    new Fraction(0, -7), Fraction.Zero //  zero
                 };
                 yield return new object[]
                 {

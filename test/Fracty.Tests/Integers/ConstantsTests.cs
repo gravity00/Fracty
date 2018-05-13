@@ -7,7 +7,7 @@ namespace Fracty.Tests.Integers
         [Fact]
         public void GivenAvailableConstantsWhenUsingZeroValueThenItMustRepresentZero()
         {
-            var fraction = Fraction.ZeroValue;
+            var fraction = Fraction.Zero;
 
             Assert.Equal(0, fraction.Numerator);
             Assert.Equal(1, fraction.Denominator);
