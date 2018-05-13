@@ -42,6 +42,7 @@ namespace Fracty
 
             if (denominator < 0)
             {
+                //  remove signal from denominator
                 Numerator = numerator * -1;
                 _denominator = Math.Abs(denominator);
             }
