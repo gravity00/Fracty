@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Fracty.Tests.Integers
 {
-    public class ComparisonTests
+    public class EqualComparisonTests
     {
-        [Theory, MemberData(nameof(EqualFractionsParameters))]
+        [Theory, MemberData(nameof(FractionsParameters))]
         public void GivenEquivalentFractionsWhenComparingBothThenEqualsMustBeTrue(
             Fraction lFraction, Fraction rFraction)
         {
@@ -17,7 +17,7 @@ namespace Fracty.Tests.Integers
             Assert.Equal(0, lFraction.CompareTo(rFraction));
         }
 
-        public static IEnumerable<object[]> EqualFractionsParameters
+        public static IEnumerable<object[]> FractionsParameters
         {
             get
             {
