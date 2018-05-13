@@ -22,6 +22,11 @@ namespace Fracty
         public static readonly Fraction One = new Fraction(1, 1);
 
         /// <summary>
+        /// Represents the minus one value (-1/1). This field is constant.
+        /// </summary>
+        public static readonly Fraction MinusOne = new Fraction(-1, 1);
+
+        /// <summary>
         /// Represents the largest possible value of a fraction (<see cref="int.MaxValue"/>/1). This field is constant.
         /// </summary>
         public static readonly Fraction MaxValue = new Fraction(int.MaxValue, 1);
