@@ -1,9 +1,11 @@
 ﻿// Copyright (c) 2018 João Simões.
 // Licensed under the MIT License. See License in the project root for license information.
 
+using System;
+
 namespace Fracty
 {
-    public partial struct Fraction
+    public partial struct Fraction : IConvertible
     {
         private const int RoundRes = 1000000;
 
@@ -21,6 +23,9 @@ namespace Fracty
         /// <param name="value">The value to convert</param>
         public static explicit operator long(Fraction value) => value.Numerator / value.Denominator;
 
+        /// <inheritdoc />
+        public long ToInt64(IFormatProvider provider) => (long)this;
+
         #endregion
 
         #region int
@@ -37,6 +42,9 @@ namespace Fracty
         /// <param name="value">The value to convert</param>
         public static explicit operator int(Fraction value) => value.Numerator / value.Denominator;
 
+        /// <inheritdoc />
+        public int ToInt32(IFormatProvider provider) => (int) this;
+
         #endregion
 
         #region short
@@ -46,6 +54,15 @@ namespace Fracty
         /// </summary>
         /// <param name="value">The value to convert</param>
         public static implicit operator Fraction(short value) => new Fraction(value, 1);
+
+        /// <summary>
+        /// Explicit convertion of <see cref="Fraction"/> into <see cref="short"/>.
+        /// </summary>
+        /// <param name="value">The value to convert</param>
+        public static explicit operator short(Fraction value) => (short) (value.Numerator / value.Denominator);
+
+        /// <inheritdoc />
+        public short ToInt16(IFormatProvider provider) => (short)this;
 
         #endregion
 
@@ -63,6 +80,9 @@ namespace Fracty
         /// <param name="value">The value to convert</param>
         public static explicit operator decimal(Fraction value) => (decimal) value.Numerator / value.Denominator;
 
+        /// <inheritdoc />
+        public decimal ToDecimal(IFormatProvider provider) => (decimal)this;
+
         #endregion
 
         #region double
@@ -78,6 +98,9 @@ namespace Fracty
         /// </summary>
         /// <param name="value">The value to convert</param>
         public static explicit operator double(Fraction value) => (double) value.Numerator / value.Denominator;
+
+        /// <inheritdoc />
+        public double ToDouble(IFormatProvider provider) => (double)this;
 
         #endregion
 
@@ -95,6 +118,42 @@ namespace Fracty
         /// <param name="value">The value to convert</param>
         public static explicit operator float(Fraction value) => (float) value.Numerator / value.Denominator;
 
+        /// <inheritdoc />
+        public float ToSingle(IFormatProvider provider) => (float)this;
+
         #endregion
+
+        /// <inheritdoc />
+        public TypeCode GetTypeCode() => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public bool ToBoolean(IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public byte ToByte(IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public char ToChar(IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public DateTime ToDateTime(IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public sbyte ToSByte(IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public string ToString(IFormatProvider provider) => ToString();
+
+        /// <inheritdoc />
+        public object ToType(Type conversionType, IFormatProvider provider) => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        public ushort ToUInt16(IFormatProvider provider) => (ushort) ToInt16(provider);
+
+        /// <inheritdoc />
+        public uint ToUInt32(IFormatProvider provider) => (uint) ToInt32(provider);
+
+        /// <inheritdoc />
+        public ulong ToUInt64(IFormatProvider provider) => (ulong) ToInt64(provider);
     }
 }
