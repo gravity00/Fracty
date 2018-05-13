@@ -163,5 +163,61 @@ namespace Fracty
                 : throw new ArgumentException("Object is not a Fraction", nameof(obj));
 
         #endregion
+
+        #region Lesser
+
+        /// <summary>
+        /// Checks if the left fraction is lesser than the right fraction.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if lesser, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator <(Fraction l, Fraction r) =>
+            l.Denominator == r.Denominator
+                ? l.Numerator < r.Numerator
+                : l.Numerator * r.Denominator < r.Numerator * l.Denominator;
+
+        /// <summary>
+        /// Checks if the left fraction is lesser than or equals to the right fraction.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if lesser or equals, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator <=(Fraction l, Fraction r) =>
+            l.Denominator == r.Denominator
+                ? l.Numerator <= r.Numerator
+                : l.Numerator * r.Denominator <= r.Numerator * l.Denominator;
+
+        #endregion
+
+        #region Greater
+
+        /// <summary>
+        /// Checks if the left fraction is greater than the right fraction.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if greater, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator >(Fraction l, Fraction r) =>
+            l.Denominator == r.Denominator
+                ? l.Numerator > r.Numerator
+                : l.Numerator * r.Denominator > r.Numerator * l.Denominator;
+
+        /// <summary>
+        /// Checks if the left fraction is greater than or equals to the right fraction.
+        /// </summary>
+        /// <param name="l">The left value</param>
+        /// <param name="r">The right value</param>
+        /// <returns>True if greater or equals, otherwise false</returns>
+        /// <exception cref="OverflowException"></exception>
+        public static bool operator >=(Fraction l, Fraction r) =>
+            l.Denominator == r.Denominator
+                ? l.Numerator >= r.Numerator
+                : l.Numerator * r.Denominator >= r.Numerator * l.Denominator;
+
+        #endregion
     }
 }
