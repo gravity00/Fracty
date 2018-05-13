@@ -24,6 +24,12 @@ namespace Fracty
         public static explicit operator int(Fraction value) => value.Numerator / value.Denominator;
 
         /// <summary>
+        /// Explicit convertion of <see cref="Fraction"/> into <see cref="decimal"/>.
+        /// </summary>
+        /// <param name="value">The value to convert</param>
+        public static explicit operator decimal(Fraction value) => (decimal) value.Numerator / value.Denominator;
+
+        /// <summary>
         /// Explicit convertion of <see cref="Fraction"/> into <see cref="double"/>.
         /// </summary>
         /// <param name="value">The value to convert</param>
