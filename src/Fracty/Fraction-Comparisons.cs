@@ -6,8 +6,8 @@ using System;
 namespace Fracty
 {
     public partial struct Fraction : 
-        IEquatable<Fraction>, IEquatable<int>, IEquatable<short>, 
-        IComparable<Fraction>, IComparable<int>, IComparable<short>, IComparable
+        IEquatable<Fraction>, /*IEquatable<int>, IEquatable<short>,*/ 
+        IComparable<Fraction>, /*IComparable<int>, IComparable<short>,*/ IComparable
     {
         /// <inheritdoc />
         public override int GetHashCode()
@@ -22,13 +22,13 @@ namespace Fracty
 
         /// <inheritdoc />
         public bool Equals(Fraction other) => this == other;
-
+        /*
         /// <inheritdoc />
         public bool Equals(int other) => this == other;
 
         /// <inheritdoc />
         public bool Equals(short other) => this == other;
-
+        //*/
         /// <inheritdoc />
         public override bool Equals(object obj) =>
             !(obj is null) && obj is Fraction fraction && Equals(fraction);
@@ -44,7 +44,7 @@ namespace Fracty
             l.Denominator == r.Denominator
                 ? l.Numerator == r.Numerator
                 : l.Numerator * r.Denominator == r.Numerator * l.Denominator;
-
+        /*
         /// <summary>
         /// Checks if fractions and an <see cref="int"/> represent the same value.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Fracty
         /// <exception cref="OverflowException"></exception>
         public static bool operator ==(Fraction l, short r) =>
             l.Numerator == r * l.Denominator;
-
+        //*/
         #endregion
 
         #region Not Equals
@@ -97,7 +97,7 @@ namespace Fracty
         /// <returns>False if same value, otherwise true</returns>
         /// <exception cref="OverflowException"></exception>
         public static bool operator !=(Fraction l, Fraction r) => !(l == r);
-
+        /*/
         /// <summary>
         /// Checks if fractions and an <see cref="int"/> represent a different value.
         /// </summary>
@@ -137,7 +137,7 @@ namespace Fracty
         /// <exception cref="OverflowException"></exception>
         public static bool operator !=(Fraction l, short r) =>
             l.Numerator != r * l.Denominator;
-
+        //*/
         #endregion
 
         #region Compare
@@ -147,7 +147,7 @@ namespace Fracty
             Denominator == other.Denominator
                 ? Numerator.CompareTo(other.Numerator)
                 : (Numerator * other.Denominator).CompareTo(other.Numerator * Denominator);
-
+        /*
         /// <inheritdoc />
         public int CompareTo(int other) =>
             Numerator.CompareTo(other * Denominator);
@@ -155,7 +155,7 @@ namespace Fracty
         /// <inheritdoc />
         public int CompareTo(short other) =>
             Numerator.CompareTo(other * Denominator);
-
+        //*/
         /// <inheritdoc />
         public int CompareTo(object obj) =>
             obj is Fraction fraction
