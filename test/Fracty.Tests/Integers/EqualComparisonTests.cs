@@ -6,7 +6,7 @@ namespace Fracty.Tests.Integers
     public class EqualComparisonTests
     {
         [Theory, MemberData(nameof(FractionsParameters))]
-        public void GivenEquivalentFractionsWhenComparingBothThenEqualsMustBeTrue(
+        public void GivenAFractionWhenComparingWithEquivalentFractionThenEqualsMustBeTrue(
             Fraction lFraction, Fraction rFraction)
         {
             Assert.True(lFraction.Equals(rFraction));
@@ -43,6 +43,10 @@ namespace Fracty.Tests.Integers
                 };
                 yield return new object[]
                 {
+                    new Fraction(1, -6), new Fraction(-1, 6) //  same values (inverted)
+                };
+                yield return new object[]
+                {
                     new Fraction(4, 6), new Fraction(2, 3) //  same ratio
                 };
                 yield return new object[]
@@ -52,6 +56,10 @@ namespace Fracty.Tests.Integers
                 yield return new object[]
                 {
                     new Fraction(-10, 30), new Fraction(1, -3) //  same ratio (inverted)
+                };
+                yield return new object[]
+                {
+                    new Fraction(5, -10), new Fraction(-15, 30) //  same ratio (inverted)
                 };
             }
         }
